@@ -10,7 +10,7 @@ buildscript {
 }
 
 version "0.1"
-group "com.k_int.dm"
+group "com.k-int.dm"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
