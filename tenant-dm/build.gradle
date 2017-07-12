@@ -49,8 +49,12 @@ bootRun {
     jvmArgs('-Dspring.output.ansi.enabled=always')
     addResources = true
 }
+
 // enable if you wish to package this plugin as a standalone application
+
 bootRepackage.enabled = false
+
+// See http://spiesdavid.blogspot.co.uk/2016/11/publishing-grails-3-plugins-to-nexus.html
 grailsPublish {
     // TODO: Provide values here
     user = 'user'
@@ -59,13 +63,27 @@ grailsPublish {
     license {
         name = 'Apache-2.0'
     }
-    title = "My Plugin"
-    desc = "Full plugin description"
-    developers = [johndoe:"John Doe"]
+    title = "Knowint Tenant Datamodel Component"
+    desc = "Contains comain classes for storing Tenant Ids. Import into any project needing that info"
+    developers = [ianibbo:"Ian Ibbotson"]
     portalUser = ""
     portalPassword = ""    
 }
 
+// See ~/.gradle/gradle.properties for the definitions of mvnUser mvnPassword
+
+
+publishing {
+    repositories {
+        maven {
+            credentials {
+                username mvnUser
+                password mvnPassword
+            }
+            url "http://nexus.k-int.com/content/repositories/releases/"
+        }
+    }
+}
 
 assets {
     packagePlugin = true
